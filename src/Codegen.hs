@@ -1,17 +1,14 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# OPTIONS_GHC -fwarn-unused-imports #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 
 module Codegen where
 
-import Data.ByteString.Short
-import Data.Monoid ((<>))
-import Data.Word
 import Data.String
 import Data.List
 import Data.Function
 import qualified Data.Map as Map
 
-import Control.Applicative
 import Control.Monad.State
 
 import LLVM.AST
@@ -21,11 +18,14 @@ import LLVM.AST.Type
 import LLVM.AST.Global
 import qualified LLVM.AST as AST
 
+import LLVM.Prelude
 import qualified LLVM.AST.Linkage as L
 import qualified LLVM.AST.Constant as C
 import qualified LLVM.AST.Attribute as A
 import qualified LLVM.AST.CallingConvention as CC
 import qualified LLVM.AST.FloatingPointPredicate as FP
+
+import qualified LLVM.IRBuilder as IR
 
 -------------------------------------------------------------------------------
 -- Module Level
