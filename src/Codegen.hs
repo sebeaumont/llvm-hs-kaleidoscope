@@ -106,7 +106,7 @@ void = AST.VoidType
 
 type Names = Map.Map ShortByteString Int
 
-uniqueName :: ShortByteString -> Names -> (ShortByteString, Names)
+uniqueName :: ShortByteString ->Names -> (ShortByteString, Names)
 uniqueName nm ns =
   case Map.lookup nm ns of
     Nothing -> (nm,  Map.insert nm 1 ns)
@@ -264,16 +264,16 @@ externf ty nm = ConstantOperand (C.GlobalReference ty nm)
 
 -- Arithmetic and Constants
 fadd :: Operand -> Operand -> Codegen Operand
-fadd a b = instr float $ FAdd NoFastMathFlags a b []
+fadd a b = instr float $ FAdd noFastMathFlags a b []
 
 fsub :: Operand -> Operand -> Codegen Operand
-fsub a b = instr float $ FSub NoFastMathFlags a b []
+fsub a b = instr float $ FSub noFastMathFlags a b []
 
 fmul :: Operand -> Operand -> Codegen Operand
-fmul a b = instr float $ FMul NoFastMathFlags a b []
+fmul a b = instr float $ FMul noFastMathFlags a b []
 
 fdiv :: Operand -> Operand -> Codegen Operand
-fdiv a b = instr float $ FDiv NoFastMathFlags a b []
+fdiv a b = instr float $ FDiv noFastMathFlags a b []
 
 fcmp :: FP.FloatingPointPredicate -> Operand -> Operand -> Codegen Operand
 fcmp cond a b = instr float $ FCmp cond a b []
